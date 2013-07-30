@@ -1,0 +1,6 @@
+[phase1]
+bulkmod = 1
+shearmod = .75
+[phase2]
+bulkmod = 0
+shearmod = 0

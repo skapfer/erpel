@@ -1,0 +1,9 @@
+conjgrad
+Erpel
+Erpel.bin
+volume_fractions
+*.o
+logfile*txt
+convergence.log
+distortion.log
+.*.swp
