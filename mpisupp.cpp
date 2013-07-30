@@ -109,6 +109,7 @@ void sequentially_end () {
     }
 }
 
+#ifdef HAVE_LINUX_SETAFFINITY_NP
 // CPU_COUNT is not in ancient glibcs. gna.
 static int num_cpus_in_cpuset (const cpu_set_t *quux) {
     int ret = 0;
@@ -172,6 +173,7 @@ void affinity_report (FILE *fp) {
         fprintf (fp, "%i", (int)!! (CPU_ISSET (j, &cpuset)));
     fprintf (fp, "\n");
 }
+#endif // HAVE_LINUX_SETAFFINITY_NP
 
 void redirect_stderr (std::string filename) {
     filename = cpp_sprintf (filename, world->rank ());

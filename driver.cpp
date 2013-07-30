@@ -225,13 +225,17 @@ void check_for_obsolete_options (CommandLine &cmdline) {
 int main (int argc, char **argv) {
     mpiutil::initialise (argc, argv);
 
+#ifdef HAVE_LINUX_SETAFFINITY_NP
     mpiutil::affinity_auto_pin (stderr);
     mpiutil::affinity_report (stderr);
+#endif
 
     CommandLine cmdline (argc, argv);
     outfile_prefix = cmdline.string ("prefix", "");
     mpiutil::redirect_stderr (make_filename ("logfile%i.txt", world->rank ()));
+#ifdef HAVE_LINUX_SETAFFINITY_NP
     mpiutil::affinity_report (stderr);
+#endif
 
     check_for_obsolete_options (cmdline);
     time_t time_begin = time (0);

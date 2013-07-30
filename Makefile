@@ -18,9 +18,13 @@ else
 endif
 
 # enable this if you want things to be fast
+# SSE2 assembly version of innermost loop
 #CXXFLAGS+=-DHAVE_SSE2
 # BLAS library (IMKL, ACML, ...)
 #CXXFLAGS+=-DHAVE_BLAS
+
+# linux setaffinity call for automatic pinning
+#CXXFLAGS+=-DHAVE_LINUX_SETAFFINITY_NP
 
 UTILITIES = writevtk.o mpisupp.o ublas.o TinyCmd.o shared.o stencils_iso.o tinyconf.o bzopen.o eio.o
 BINARY = Erpel.bin

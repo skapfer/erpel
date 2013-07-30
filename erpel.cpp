@@ -297,7 +297,9 @@ static pthread_t thr_id;
 
 static
 void *thread (void *) {
+#ifdef HAVE_LINUX_SETAFFINITY_NP
     mpiutil::affinity_report (stderr);
+#endif
 
     for (;;) {
         pthread_mutex_lock (&begin_mutex);
