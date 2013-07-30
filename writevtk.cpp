@@ -5,8 +5,8 @@
 #include "writevtk.hpp"
 #include <fstream>
 #include <string>
-#include <stdlib.h>
-#include <math.h>
+#include <cstdlib>
+#include <cmath>
 
 static
 void write_vtk_header (std::ostream &os,
@@ -50,7 +50,7 @@ void write_to_vtk (const char *name, const char *filedesc,
     for (int i = 0; i != nx; ++i)
     for (int j = 0; j != ny; ++j)
     for (int k = 0; k != nz; ++k) {
-        if (isnan (array[i][j][k]))
+        if (std::isnan (array[i][j][k]))
             ofs << "0.0 ";
         else
             ofs << array[i][j][k] << " ";
